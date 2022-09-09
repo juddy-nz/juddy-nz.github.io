@@ -23,22 +23,43 @@
       <a href="https://www.twitter.com/juddybuddy69"><img src="images/twitter.png" width="50px" target="blank" class="rounded-corners"></img></a>
       <a href="https://www.instagram.com/juddy.nz"><img src="images/instagram.png" width="50px" target="blank" class="rounded-corners"></img></a>
 
-
-
     </div>
-
       
-    
+    <iframe>
       <div class="form-center" width="20%">
         <p>Contact Juddy</p>
-        <form target="_blank" action="https://formsubmit.co/b7b42d0d4b868535eacb1855381d7557" method="POST">
+        <form id="myForm" target="form center" action="https://formsubmit.co/b7b42d0d4b868535eacb1855381d7557" method="POST">
+          <script
+          src="https://code.jquery.com/jquery-3.4.1.min.js"
+          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+          crossorigin="anonymous">
+        $('#myForm').submit(function(e) {
+
+e.preventDefault(); // prevent from submitting form directly
+
+$.ajax({
+  url: 'https://juddy-nz.github.io/contact.html',
+  method: 'post',
+  data: $("#myForm").serializeArray() // convert all form data to array (key:value)
+})
+.done(function(response){
+  alert(response); // show the response
+  $("#myForm").reset(); // reset the form
+})
+.fail(function(error){
+  alert(error); // show the error.
+});
+
+})
+        </script>
+
           <!-- Honeypot -->
           <input type="text" name="_honey" style="display: none;">
 
           <!-- Disable Captcha -->
           <input type="hidden" name="_captcha" value="false">
 
-          <input type="hidden" name="_next" value="http://127.0.0.1:5500/juddywebsite/success.html" target="webbody">
+          <input type="hidden" name="_next" value="https://juddy-nz.github.io/success.html" target="webbody">
 
       <input type="text" name="Name" placeholder="Name" style="width: 200px;" required>
       <input type="text" name="Email" placeholder="Email" style="width: 200px;" required>
